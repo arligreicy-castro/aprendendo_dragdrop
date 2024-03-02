@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+		#div1 {
+		  margin-left:405px;
+		  width: 100px;
+		  height:100px;
+		  padding: 10px;
+		  border: 5px dashed #aaaaaa;
+		  text-align:center;
+		}
+        #div2 {
+          margin-left:50px;
+		  width: 100px;
+		  height:100px;
+		  padding: 10px;
+		  border: 5px dashed #aaaaaa;
+		  text-align:center;
+		}
+		#div3 {
+          margin-left:50px;
+		  width: 100px;
+		  height:100px;
+		  padding: 10px;
+		  border: 5px dashed #aaaaaa;
+		  text-align:center;
+		}
+        body{
+            background-color:cornflowerblue;
+        }
+		</style>
+		<script>
+			function start(ev)
+			{
+				ev.currentTarget.style.border="dashed";
+				ev.dataTransfer.setData("img",ev.target.id);
+				
+			}
+			function durante(ev)
+			{
+				ev.preventDefault();
+				
+			}
+			function entrou(ev)
+			{
+				ev.preventDefault();
+				
+			}
+			function emCima(ev)
+			{
+				ev.preventDefault();
+				ev.currentTarget.style.background="black";
+				
+			}
+					
+			function saiu(ev)
+			{
+				ev.preventDefault();
+				
+			}
+			
+			function solto(ev)
+			{
+				ev.preventDefault();
+				var id = ev.dataTransfer.getData("img");
+				ev.target.appendChild(document.getElementById(id));
+				
+			}
+			function fim(ev)
+			{
+				ev.preventDefault();
+				ev.target.style.border="solid black";
+				ev.dataTransfer.clearData();
+				
+							
+			}
+									
+		</script>
+	</head>
+	<body>
+		<br>
+		<h1 style="margin-left:405px;">Aprendendo o Drag and Drop </h1><br>
+		
+        <table>
+            <td>
+                <label style="margin-left:405px; font-size:25px;">Calendário</label>
+                <div id="div1" ondragover="emCima(event)" ondrop="solto(event)" ondragleave="saiu(event) "ondragenter="entrou(event)" value="drag1"></div>
+            </td>
+            <td>
+                <label style="margin-left:50px; font-size:25px;">Lixeira</label>
+		        <div id="div2" ondragover="emCima(event)" ondrop="solto(event)" ondragleave="saiu(event) "ondragenter="entrou(event)" value="drag2"></div> 	
+            </td>
+			<td>
+                <label style="margin-left:50px; font-size:25px;">Windowns</label>
+		        <div id="div3" ondragover="emCima(event)" ondrop="solto(event)" ondragleave="saiu(event) "ondragenter="entrou(event)" value="drag3"></div> 	
+            </td>
+			        
+		</table>
+		<br><br>
+
+		
+		<div style="margin-left:440px;">
+			<img id="drag1" src="img/calendario.jpg"  width="100" height="100" draggable = "true" ondragstart = "start(event)" ondrag="durante(event)" ondragend="fim(event)">
+            <img id="drag2" src="img/wdw.jpg"  width="100" height="100" draggable = "true" ondragstart = "start(event)" ondrag="durante(event)" ondragend="fim(event)">
+            <img id="drag3" src="img/lixeira.jpg"  width="100" height="100" draggable = "true" ondragstart = "start(event)" ondrag="durante(event)" ondragend="fim(event)">
+			
+		</div>
+		
+	</body>
+</html>
